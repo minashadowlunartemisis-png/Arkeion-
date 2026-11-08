@@ -1,6 +1,6 @@
 // ARKEION — service worker: permite usar la app sin conexión.
 // Al cambiar archivos, sube el número de versión de CACHE para forzar la actualización.
-const CACHE = "arkeion-v1";
+const CACHE = "arkeion-v3";
 const ASSETS = [
   "./",
   "index.html",
@@ -29,17 +29,15 @@ self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET" || new URL(req.url).origin !== self.location.origin) return;
 
+  // Red primero: así cada cambio llega en cuanto hay conexión.
+  // Caché solo cuando no hay red (uso sin conexión).
   event.respondWith(
-    caches.match(req).then(
-      (hit) =>
-        hit ||
-        fetch(req)
-          .then((res) => {
-            const copy = res.clone();
-            caches.open(CACHE).then((cache) => cache.put(req, copy));
-            return res;
-          })
-          .catch(() => caches.match("index.html"))
-    )
+    fetch(req)
+      .then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE).then((cache) => cache.put(req, copy));
+        return res;
+      })
+      .catch(() => caches.match(req).then((hit) => hit || caches.match("index.html")))
   );
 });
