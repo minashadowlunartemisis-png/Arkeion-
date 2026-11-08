@@ -1,6 +1,6 @@
 // ARKEION — service worker: permite usar la app sin conexión.
 // Al cambiar archivos, sube el número de versión de CACHE para forzar la actualización.
-const CACHE = "arkeion-v1";
+const CACHE = "arkeion-v2";
 const ASSETS = [
   "./",
   "index.html",

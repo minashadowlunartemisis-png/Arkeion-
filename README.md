@@ -2,10 +2,22 @@
 
 > ARKEION no te dice qué aprender. Guarda lo que tú decides aprender.
 
-Archivo personal para guardar y organizar tus apuntes de idiomas. Cada idioma
-es su propio archivo, con categorías que tú creas (Vocabulario, Frases,
-Gramática, Mis notas, o las que quieras). Cada apunte puede tener título,
-contenido, ejemplos y notas personales.
+Archivo personal para aprender uno o varios idiomas. Cada idioma es su propio
+archivo con cinco secciones:
+
+| Sección | Qué guarda |
+|---|---|
+| 📖 Vocabulario | Mi diccionario: palabra, pronunciación, tipo, significado, ejemplo, traducción, relacionadas, asociación personal, notas y cómo la recuerdo (🌱 / 💡 / ✦) |
+| 📜 Gramática | Tema, explicación con mis palabras, regla, ejemplos, errores que debo evitar y práctica |
+| 💬 Frases y expresiones | Frase, significado, categoría (que tú creas), situación de uso y mi ejemplo |
+| 📝 Apuntes libres | Cualquier cosa: explicaciones de un video, notas de clase, reglas culturales |
+| 🌙 Bitácora | Diario opcional por fecha: qué aprendí, qué fue difícil, qué repasar, qué descubrí. Sin métricas |
+
+Herramientas de estudio (fuera de cada idioma):
+
+- **Repaso de vocabulario:** muestra una palabra, revelas el significado y marcas cómo la recuerdas.
+- **Búsqueda general:** busca en todos los idiomas y secciones.
+- **Actividades interactivas:** pendiente.
 
 Es una PWA estática: HTML, CSS y JavaScript sin dependencias ni servidor.
 Los datos se guardan en el navegador del dispositivo.
@@ -16,7 +28,7 @@ Los datos se guardan en el navegador del dispositivo.
 arkeion/
 ├── index.html            # Estructura de la app
 ├── styles.css            # Estética "The Ancient Library"
-├── app.js                # Lógica: archivo, idiomas, categorías, apuntes
+├── app.js                # Idiomas, secciones, entradas, repaso y búsqueda
 ├── sw.js                 # Service worker (uso sin conexión)
 ├── manifest.webmanifest  # Instalación en el celular
 └── icon.svg              # Sello Α
@@ -50,18 +62,19 @@ Abre http://localhost:8080 en el navegador.
 
 ## Datos y copias de seguridad
 
-- Todo se guarda en `localStorage` del navegador, bajo la clave `arkeion.v1`.
+- Todo se guarda en `localStorage` del navegador, bajo la clave `arkeion.v2`.
+- La versión 2 usa una estructura nueva. Los datos de la versión 1 (`arkeion.v1`) no se migran.
 - Ajustes → **Exportar** descarga un `.json` con todo tu archivo.
-- Ajustes → **Importar** reemplaza el archivo actual por el de un `.json` exportado.
+- Ajustes → **Importar** reemplaza el archivo actual por el de un `.json` exportado (solo versión 2).
 - Si borras los datos del navegador, pierdes el archivo: exporta de vez en cuando.
 
 ## Actualizar la app
 
 Cuando cambies archivos, sube el número de `CACHE` en `sw.js` (por ejemplo,
-`arkeion-v2`) para que los dispositivos reciban la nueva versión.
+`arkeion-v3`) para que los dispositivos reciban la nueva versión.
 
 ## Próximos pasos posibles
 
-- Actividades de repaso basadas en tus propios apuntes.
-- Renombrar categorías y mover apuntes entre ellas.
-- Etiquetas y filtros por apunte.
+- Actividades interactivas basadas en tus propios apuntes.
+- Editar o renombrar categorías de frases y moverlas entre ellas.
+- Etiquetas y filtros por entrada.

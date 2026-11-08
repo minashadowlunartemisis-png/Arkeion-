@@ -342,3 +342,41 @@ label.field {
   z-index: 10;
 }
 .toast.show { opacity: 1; }
+
+/* ---------- Entradas y repaso ---------- */
+
+.item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.badge {
+  align-self: start;
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--gold);
+  border: 1px solid var(--gold-2);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  white-space: nowrap;
+}
+
+.pron {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+.review-actions { display: grid; gap: 0.5rem; }
+.review-actions .btn { width: 100%; }
+
+.file-btn { position: relative; }
+.file-btn input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
